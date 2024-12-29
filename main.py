@@ -127,6 +127,7 @@ def main():
             time.sleep(20)
         elif "calculate" in query:
             calculator()
+            time.sleep(5)
 
 
 if __name__ == "__main__":
