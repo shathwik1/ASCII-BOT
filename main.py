@@ -124,6 +124,7 @@ def main():
             webbrowser.open(f"google.com/search?q={query}")
         elif "wikipedia" in query:
             wikipedia_summary(query)
+            time.sleep(20)
         elif "calculate" in query:
             calculator()
 
