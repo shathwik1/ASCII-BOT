@@ -98,31 +98,37 @@ def calculator():
     print(f"The result for {num1} {operation} {num2} = {solution}")
 
 
-wish_me()
-time.sleep(3)
-while True:
-    query = recognize_speech().lower()
-    if "exit" in query:
-        break
-    elif "the time" in query:
-        strTime = datetime.datetime.now().strftime("%H:%M:%S")
-        print(f"Sir, the time is {strTime}")
-        speak(f"Sir, the time is {strTime}")
-    elif "open" in query and "file" in query:
-        speak("what is the path?")
-        path = input("what is the path? ")
-        os.startfile(path)
-    elif "open" in query:
-        query = query.replace("open ", "")
-        speak(f"Opening {query}...")
-        time.sleep(0.9)
-        webbrowser.open(f"{query}.com")
-    elif "google" in query:
-        query = query.replace("google ", "")
-        speak(f"Searching {query}...")
-        time.sleep(0.9)
-        webbrowser.open(f"google.com/search?q={query}")
-    elif "wikipedia" in query:
-        wikipedia_summary(query)
-    elif "calculate" in query:
-        calculator()
+def main():
+    while True:
+        query = recognize_speech().lower()
+        if "exit" in query:
+            speak("Goodbye!")
+            break
+        elif "the time" in query:
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")
+            print(f"Sir, the time is {strTime}")
+            speak(f"Sir, the time is {strTime}")
+        elif "open" in query and "file" in query:
+            speak("what is the path?")
+            path = input("what is the path? ")
+            os.startfile(path)
+        elif "open" in query:
+            query = query.replace("open ", "")
+            speak(f"Opening {query}...")
+            time.sleep(0.9)
+            webbrowser.open(f"{query}.com")
+        elif "google" in query:
+            query = query.replace("google ", "")
+            speak(f"Searching {query}...")
+            time.sleep(0.9)
+            webbrowser.open(f"google.com/search?q={query}")
+        elif "wikipedia" in query:
+            wikipedia_summary(query)
+        elif "calculate" in query:
+            calculator()
+
+
+if __name__ == "__main__":
+    wish_me()
+    time.sleep(3)
+    main()
